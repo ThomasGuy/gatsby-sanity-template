@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-shadow */
+
 import { graphql } from 'gatsby';
 import SanityImage from 'gatsby-plugin-sanity-image';
 import React from 'react';
