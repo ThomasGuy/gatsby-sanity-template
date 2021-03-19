@@ -10,7 +10,6 @@ const GalleryLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   margin-top: 10rem;
-  background-color: var(--grey);
 
   @media screen and (min-width: 476px) {
     grid-template-columns: 1fr 1fr;
