@@ -3,26 +3,14 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
-import { Fixed, Navbar, NavbarNav, NavbarNavItem, Banner } from '../styles';
+import { NavFixed, NavbarNav, NavbarNavItem, Banner } from '../styles';
 import NavCollapse from '../hooks/NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 
-function NavSmall({ children }) {
-  return (
-    <Navbar>
-      <NavbarNav>{children}</NavbarNav>
-    </Navbar>
-  );
-}
-
 function NavItem({ open, setOpen, children, icon, linkref }) {
-  const listener = useCallback(
-    evt => {
-      console.log(evt);
-      setOpen(state => !state);
-    },
-    [setOpen]
-  );
+  const listener = useCallback(() => {
+    setOpen(state => !state);
+  }, [setOpen]);
 
   const handleKey = useCallback(
     evt => {
@@ -71,11 +59,12 @@ function NavLink({ icon }) {
   );
 }
 
-const Nav = () => {
+function Nav() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const linkref = useRef(null);
-  useOnClickOutside(dropdownRef, linkref, setOpen);
+  const handler = useCallback(() => setOpen(false), [setOpen]);
+  useOnClickOutside(dropdownRef, linkref, handler);
 
   const { category } = useStaticQuery(graphql`
     query {
@@ -92,8 +81,8 @@ const Nav = () => {
   `);
 
   return (
-    <Fixed>
-      <NavSmall>
+    <NavFixed>
+      <NavbarNav>
         <Banner>Gallery Template</Banner>
         <NavLink icon={<HomeIcon />} key="Home" />
         <NavItem
@@ -105,9 +94,9 @@ const Nav = () => {
           setOpen={setOpen}>
           <NavCollapse list={category.nodes} dropref={dropdownRef} />
         </NavItem>
-      </NavSmall>
-    </Fixed>
+      </NavbarNav>
+    </NavFixed>
   );
-};
+}
 
 export default Nav;

@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
     --title: #442502;
     --link_hover: rgba(134, 80, 9, 0.2);
     --nav-size: 60px;
-    --border: 1px solid #474a4d;
+    --border: 2px solid #474a4d;
     --sm: 479;
     --border-radius: 8px;
     --speed: 500ms;
