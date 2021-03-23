@@ -20,7 +20,6 @@ export const Navbar = styled.nav`
 `;
 
 export const NavbarNav = styled.ul`
-  max-width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
@@ -29,9 +28,6 @@ export const NavbarNav = styled.ul`
 
 export const NavbarNavItem = styled.li`
   width: calc(var(--nav-size) * 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 0;
 
   /* Icon Button */
@@ -61,8 +57,8 @@ export const NavbarNavItem = styled.li`
   }
 `;
 
-export const SmallBanner = styled.h2`
+export const Banner = styled.h2`
   color: var(--offWhite);
-  font-size: 2.4rem;
+  font-size: 2.7rem;
   margin: 0 auto 0 2rem;
 `;

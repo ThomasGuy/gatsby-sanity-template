@@ -3,13 +3,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
-import {
-  Fixed,
-  SmallBanner,
-  Navbar,
-  NavbarNav,
-  NavbarNavItem,
-} from '../styles';
+import { Fixed, Navbar, NavbarNav, NavbarNavItem, Banner } from '../styles';
 import NavCollapse from '../hooks/NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 
@@ -22,9 +16,13 @@ function NavSmall({ children }) {
 }
 
 function NavItem({ open, setOpen, children, icon, linkref }) {
-  const listener = useCallback(() => {
-    setOpen(state => !state);
-  }, [setOpen]);
+  const listener = useCallback(
+    evt => {
+      console.log(evt);
+      setOpen(state => !state);
+    },
+    [setOpen]
+  );
 
   const handleKey = useCallback(
     evt => {
@@ -37,16 +35,14 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
   );
 
   useEffect(() => {
-    if (linkref && linkref.current) {
-      const bun = linkref.current;
-      bun.addEventListener('click', listener);
-      document.addEventListener('keydown', handleKey); // listen for 'tab' key
+    const bun = linkref.current;
+    bun.addEventListener('click', listener);
+    document.addEventListener('keydown', handleKey); // listen for 'tab' key
 
-      return () => {
-        bun.removeEventListener('click', listener);
-        document.removeEventListener('keydown', handleKey);
-      };
-    }
+    return () => {
+      bun.removeEventListener('click', listener);
+      document.removeEventListener('keydown', handleKey);
+    };
   }, [handleKey, linkref, listener]);
 
   return (
@@ -78,8 +74,8 @@ function NavLink({ icon }) {
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const linkref = useRef(open);
-  useOnClickOutside(dropdownRef, () => setOpen(false));
+  const linkref = useRef(null);
+  useOnClickOutside(dropdownRef, linkref, setOpen);
 
   const { category } = useStaticQuery(graphql`
     query {
@@ -98,9 +94,10 @@ const Nav = () => {
   return (
     <Fixed>
       <NavSmall>
-        <SmallBanner>Gallery Template</SmallBanner>
+        <Banner>Gallery Template</Banner>
         <NavLink icon={<HomeIcon />} key="Home" />
         <NavItem
+          ref={linkref}
           linkref={linkref}
           icon={<BurgerIcon />}
           key="burger"

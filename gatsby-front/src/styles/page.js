@@ -11,4 +11,8 @@ export const Page = styled.div`
     color: var(--title);
     text-align: center;
   }
+
+  h1 {
+    font-size: 3.7rem;
+  }
 `;
