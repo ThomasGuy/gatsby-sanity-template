@@ -7,10 +7,10 @@ export const Button = styled.button`
   top: 2px;
   right: 2px;
 
-  --button-size: calc(var(--nav-size) * 0.6);
+  --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: var(--black);
+  background-color: var(--white);
   opacity: 0.6;
   border-radius: 50%;
   padding: 5px;
@@ -26,7 +26,7 @@ export const Button = styled.button`
   }
 
   svg {
-    fill: var(--offWhite);
+    fill: var(--black);
     width: 25px;
     height: 25px;
   }
@@ -49,18 +49,9 @@ export const ModalWrapper = styled.div`
 export const ModalBox = styled.div`
   position: relative;
   width: 100%;
-  background-color: var(--white);
+  background-color: #252323;
   padding: 1rem;
-  overflow: hidden;
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  & > {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
+  overflow-y: auto;
 
   ${mediaQuery('md')`
     width: 600px;
