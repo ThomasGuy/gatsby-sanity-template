@@ -1,0 +1,14 @@
+.global {
+  --red: #ff4949;
+  --black: #6d6b6b;
+  --yellow: #ffc600;
+  --white: #fff;
+  --offWhite: #ededed;
+  --grey: #efefef;
+  --maxWidth: 1280px;
+  --bs: 0 12px 24px 0 rgba(0, 0, 0, 0.2);
+  --bg: #914e21ff;
+  --bg_link: #92570b;
+  --title: #442502;
+  --link_hover: rgba(134, 80, 9, 0.2);
+}

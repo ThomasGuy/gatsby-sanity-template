@@ -21,21 +21,18 @@ export const NavbarNav = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  margin: 0 2rem; ;
 `;
 
 export const NavbarNavItem = styled.div`
   margin: 0;
-
-  &:last-child {
-    margin-right: 1.5rem;
-  }
 
   /* Icon Button */
   .icon-button {
     --button-size: calc(var(--nav-size) * 0.6);
     width: var(--button-size);
     height: var(--button-size);
-    background-color: #484a4d;
+    background-color: var(--black);
     border-radius: 50%;
     padding: 5px;
     margin: 2px;
@@ -47,7 +44,7 @@ export const NavbarNavItem = styled.div`
   }
 
   .icon-button:hover {
-    filter: brightness(1.3);
+    filter: brightness(1.4);
   }
 
   svg {

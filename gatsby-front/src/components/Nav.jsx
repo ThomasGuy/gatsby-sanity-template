@@ -4,7 +4,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import HomeIcon from '../assets/svg/house.svg';
 import BurgerIcon from '../assets/svg/list.svg';
 import { NavFixed, NavbarNav, NavbarNavItem, Banner } from '../styles';
-import NavCollapse from '../hooks/NavCollapse';
+import NavCollapse from './NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';
 
 function NavItem({ open, setOpen, children, icon, linkref }) {
@@ -86,13 +86,16 @@ function Nav() {
         <Banner>Gallery Template</Banner>
         <NavLink icon={<HomeIcon />} key="Home" />
         <NavItem
-          ref={linkref}
           linkref={linkref}
           icon={<BurgerIcon />}
           key="burger"
           open={open}
           setOpen={setOpen}>
-          <NavCollapse list={category.nodes} dropref={dropdownRef} />
+          <NavCollapse
+            list={category.nodes}
+            dropref={dropdownRef}
+            setOpen={setOpen}
+          />
         </NavItem>
       </NavbarNav>
     </NavFixed>

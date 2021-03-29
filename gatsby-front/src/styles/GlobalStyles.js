@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     --red: #FF4949;
-    --black: #2E2E2E;
+    --black: #202020;
     --yellow: #ffc600;
     --white: #fff;
     --offWhite: #ededed;
