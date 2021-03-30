@@ -18,19 +18,12 @@ export default {
         watchMode: true,
       },
     },
-    {
-      resolve: 'gatsby-plugin-sanity-image',
-      options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        token: process.env.SANITY_TOKEN,
-      },
-    },
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
+    // 'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-typography`,
