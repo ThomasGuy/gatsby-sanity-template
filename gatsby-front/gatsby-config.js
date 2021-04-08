@@ -1,8 +1,16 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
-dotenv.config({ path: '.env' });
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV || 'development'}`,
+});
 
-export default {
+// eslint-disable-next-line import/first
+const clientConfig = require('./client-config');
+
+const token = process.env.SANITY_READ_TOKEN;
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
   siteMetadata: {
     title: 'Charles Penny',
     siteUrl: 'https://charles.penny.co.uk',
@@ -12,21 +20,25 @@ export default {
     {
       resolve: 'gatsby-source-sanity',
       options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        token: process.env.SANITY_TOKEN,
-        watchMode: true,
+        ...clientConfig.sanity,
+        token,
+        watchMode: !isProd,
+        useCdn: isProd,
+        overlayDrafts: !isProd && token,
       },
     },
-    {
-      resolve: 'gatsby-plugin-sanity-image',
-      options: {
-        projectId: process.env.SANITY_PROJECT_ID,
-        dataset: process.env.SANITY_DATASET,
-        token: process.env.SANITY_TOKEN,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-sanity-image',
+    //   options: {
+    //     ...clientConfig.sanity,
+    //     token,
+    //     watchMode: !isProd,
+    //     useCdn: isProd,
+    //     overlayDrafts: !isProd && token,
+    //   },
+    // },
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',

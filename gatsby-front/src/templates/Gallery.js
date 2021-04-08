@@ -2,7 +2,8 @@
 /* eslint-disable react/prop-types */
 
 import { graphql } from 'gatsby';
-import SanityImage from 'gatsby-plugin-sanity-image';
+// import SanityImage from 'gatsby-plugin-sanity-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Modal } from '../components/SimpleModal';
@@ -56,7 +57,12 @@ const Box = styled.div`
 
 const SanityImageBox = ({ image, name, idx }) => (
   <Box>
-    <SanityImage {...image} alt={name} idx={idx} />
+    <GatsbyImage
+      image={image.asset.gatsbyImageData}
+      alt={name}
+      idx={idx}
+      loading="eager"
+    />
     <p>{name}</p>
   </Box>
 );
@@ -139,10 +145,16 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          name
           id
+          name
           image {
-            ...ImageWithPreview
+            asset {
+              gatsbyImageData(layout: CONSTRAINED, width: 600)
+            }
+          }
+          dimensions {
+            height
+            width
           }
         }
       }

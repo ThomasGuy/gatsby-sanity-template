@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "charles-penny"
+    "name": "sanity-template"
   },
   "api": {
     "projectId": "kjkw2ad3",

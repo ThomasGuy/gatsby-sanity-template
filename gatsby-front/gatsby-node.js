@@ -31,12 +31,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const pages = result.data.allSanityCategory.edges || [];
   pages.forEach(({ node }) => {
+    const slug = node.slug.current;
     createPage({
-      path: `/category/${node.slug.current}`,
+      path: `/category/${slug}`,
       component: path.resolve(`src/templates/Gallery.js`),
       context: {
         title: node.name,
-        slug: node.slug.current,
+        slug,
       },
     });
   });
