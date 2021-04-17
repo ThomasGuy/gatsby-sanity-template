@@ -141,7 +141,6 @@ export const pageQuery = graphql`
   query GalleryPageQuery($slug: String!) {
     allSanityPicture(
       filter: { category: { slug: { current: { eq: $slug } } } }
-      sort: { fields: image___asset___fluid___aspectRatio, order: DESC }
     ) {
       edges {
         node {
@@ -149,7 +148,8 @@ export const pageQuery = graphql`
           name
           image {
             asset {
-              gatsbyImageData(layout: CONSTRAINED, width: 600)
+              url
+              gatsbyImageData
             }
           }
           dimensions {

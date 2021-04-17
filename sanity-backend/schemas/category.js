@@ -4,7 +4,6 @@ import slugify from 'slugify';
 export default {
   // Computer name
   name: 'category',
-  //  visible name
   title: 'Category',
   icon,
   type: 'document',
@@ -24,6 +23,14 @@ export default {
       options: {
         source: doc => `${slugify(doc.name)}`,
       },
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'border',
+      title: 'Images have a Boarder?',
+      type: 'boolean',
+      description:
+        'Switch on for images in this category to have a boarder, otherwise switch off...',
       validation: Rule => Rule.required(),
     },
   ],
