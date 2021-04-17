@@ -1,8 +1,8 @@
 {
-  "name": "charlespenny",
+  "name": "gatsby_sanity_template",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "A gallery website template",
   "main": "package.json",
   "author": "Thomas Guy <twguy66@gmail.com>",
   "license": "UNLICENSED",
@@ -27,6 +27,7 @@
     "react": "^17.0",
     "react-dom": "^17.0",
     "react-icons": "^4.2.0",
+    "sanity-plugin-dashboard-widget-gatsby": "^1.0.9",
     "slugify": "^1.4.7"
   },
   "devDependencies": {
