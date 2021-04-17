@@ -2,11 +2,6 @@
 /* eslint-disable react/prop-types */
 
 import { graphql } from 'gatsby';
-<<<<<<< HEAD
-// import SanityImage from 'gatsby-plugin-sanity-image';
-import { GatsbyImage } from 'gatsby-plugin-image';
-=======
->>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import SanityImageBox from '../components/SanityImageBox';
@@ -42,38 +37,6 @@ const GalleryLayout = styled.div`
   }
 `;
 
-<<<<<<< HEAD
-const Box = styled.div`
-  width: 100%;
-  height: auto;
-  img {
-    border: 25px solid var(--offWhite);
-    box-shadow: var(--bs);
-  }
-  p {
-    text-align: center;
-    color: var(--offWhite);
-    opacity: 0.8;
-    font-size: 1.7rem;
-    margin: 0;
-    padding-bottom: 1rem;
-  }
-`;
-
-const SanityImageBox = ({ image, name, idx }) => (
-  <Box>
-    <GatsbyImage
-      image={image.asset.gatsbyImageData}
-      alt={name}
-      idx={idx}
-      loading="eager"
-    />
-    <p>{name}</p>
-  </Box>
-);
-
-=======
->>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
 const Gallery = ({ data }) => {
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
@@ -155,25 +118,13 @@ export const pageQuery = graphql`
           name
           image {
             asset {
-<<<<<<< HEAD
               url
-              gatsbyImageData
-            }
-          }
-          dimensions {
-            height
-            width
-=======
-              fluid {
-                src
-              }
               gatsbyImageData(
                 layout: CONSTRAINED
                 width: 600
                 placeholder: BLURRED
               )
             }
->>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
           }
         }
       }
