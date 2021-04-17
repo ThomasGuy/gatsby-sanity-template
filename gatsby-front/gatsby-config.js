@@ -20,11 +20,18 @@ module.exports = {
     {
       resolve: 'gatsby-source-sanity',
       options: {
+<<<<<<< HEAD
         ...clientConfig.sanity,
         token,
         watchMode: !isProd,
         useCdn: isProd,
         overlayDrafts: !isProd && token,
+=======
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+>>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
       },
     },
     'gatsby-plugin-styled-components',
@@ -32,7 +39,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
+    // 'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-typography`,

@@ -2,10 +2,14 @@
 /* eslint-disable react/prop-types */
 
 import { graphql } from 'gatsby';
+<<<<<<< HEAD
 // import SanityImage from 'gatsby-plugin-sanity-image';
 import { GatsbyImage } from 'gatsby-plugin-image';
+=======
+>>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import SanityImageBox from '../components/SanityImageBox';
 import { Modal } from '../components/SimpleModal';
 
 const GalleryLayout = styled.div`
@@ -38,6 +42,7 @@ const GalleryLayout = styled.div`
   }
 `;
 
+<<<<<<< HEAD
 const Box = styled.div`
   width: 100%;
   height: auto;
@@ -67,13 +72,17 @@ const SanityImageBox = ({ image, name, idx }) => (
   </Box>
 );
 
+=======
+>>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
 const Gallery = ({ data }) => {
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
   const pictures = data.allSanityPicture.edges.map(({ node }, idx) => {
     const { image, name, id } = node;
-    return <SanityImageBox name={name} image={image} key={id} idx={idx} />;
+    return (
+      <SanityImageBox name={name} image={image} key={id} idx={idx} alt={name} />
+    );
   });
   const setIndex = useCallback(
     idx => {
@@ -90,10 +99,8 @@ const Gallery = ({ data }) => {
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
-      console.log(evt.target.nodeName);
       setOpen(true);
       setIndex(parseInt(evt.target.attributes.idx.value));
-      console.log(indexRef.current);
     },
     [setIndex, setOpen]
   );
@@ -104,7 +111,7 @@ const Gallery = ({ data }) => {
         27: () => {
           e.preventDefault();
           setOpen(state => !state);
-          // window.removeEventListener('keyup', handleKeyUp, false);
+          window.removeEventListener('keyup', handleKeyUp, false);
         },
       };
 
@@ -116,11 +123,11 @@ const Gallery = ({ data }) => {
   );
 
   useEffect(() => {
-    // window.addEventListener('keyup', handleKeyUp, false);
+    window.addEventListener('keyup', handleKeyUp, false);
     document.addEventListener('click', clickHandler, false);
 
     return () => {
-      // window.removeEventListener('keyup', handleKeyUp, false);
+      window.removeEventListener('keyup', handleKeyUp, false);
       document.removeEventListener('click', clickHandler, false);
     };
   }, [clickHandler, handleKeyUp]);
@@ -148,6 +155,7 @@ export const pageQuery = graphql`
           name
           image {
             asset {
+<<<<<<< HEAD
               url
               gatsbyImageData
             }
@@ -155,6 +163,17 @@ export const pageQuery = graphql`
           dimensions {
             height
             width
+=======
+              fluid {
+                src
+              }
+              gatsbyImageData(
+                layout: CONSTRAINED
+                width: 600
+                placeholder: BLURRED
+              )
+            }
+>>>>>>> d78a37c3eb824f9421d1a4b2d721424e4858038c
           }
         }
       }

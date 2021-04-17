@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Footer from './Footer';
 import Nav from './Nav';
 import { GlobalStyles } from '../styles';
