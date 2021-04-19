@@ -24,7 +24,7 @@ const SanityImageBox = ({ image, name, idx, alt }) => (
       alt={alt}
       idx={idx}
       loading="eager"
-      imgStyle={{ border: '25px solid rgb(237, 237, 237)' }}
+      imgStyle={{ border: '15px solid hsl(34, 75%, 51%)' }}
     />
     <p>{name}</p>
   </Box>

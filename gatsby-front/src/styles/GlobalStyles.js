@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
     --grey: #efefef;
     --maxWidth: 1280px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
-    --bg: #914e21ff;
+    --bg: rgb(102, 56, 25);
     --bg_link: #92570b;
     --title: #442502;
     --link_hover: rgba(134, 80, 9, 0.2);
@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
     --speed: 500ms;
     font-size: 2rem;
     min-height: 100vh;
-    background-color: #914e21dd;
+    background-color: var(--bg);
   }
 
 

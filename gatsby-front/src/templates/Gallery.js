@@ -2,10 +2,18 @@
 /* eslint-disable react/prop-types */
 
 import { graphql } from 'gatsby';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styled from 'styled-components';
+import { TitleContext } from '../components/Layout';
 import SanityImageBox from '../components/SanityImageBox';
 import { Modal } from '../components/SimpleModal';
+import SEO from '../components/SEO';
 
 const GalleryLayout = styled.div`
   margin: 0 auto;
@@ -38,15 +46,22 @@ const GalleryLayout = styled.div`
 `;
 
 const Gallery = ({ data }) => {
+  const { title, setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
+
+  useEffect(() => {
+    setTitle(data.title.name);
+  }, [setTitle, data.title.name]);
+
   const pictures = data.allSanityPicture.edges.map(({ node }, idx) => {
     const { image, name, id } = node;
     return (
       <SanityImageBox name={name} image={image} key={id} idx={idx} alt={name} />
     );
   });
+
   const setIndex = useCallback(
     idx => {
       idx += pictures.length;
@@ -97,6 +112,7 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
+      <SEO title={title} />
       {pictures}
       {openModal && (
         <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
@@ -128,6 +144,9 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    title: sanityCategory(slug: { current: { eq: $slug } }) {
+      name
     }
   }
 `;

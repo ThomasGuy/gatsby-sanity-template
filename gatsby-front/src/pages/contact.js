@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import { TitleContext } from '../components/Layout';
 import { Page } from '../styles';
 
-const contact = () => (
-  <Page>
-    <h1>Contact page</h1>
-  </Page>
-);
+const Contact = () => {
+  const { title, setTitle } = useContext(TitleContext);
 
-export default contact;
+  useEffect(() => {
+    setTitle('Bloody Contact Page');
+  }, [setTitle]);
+
+  return (
+    <Page>
+      <h1>Contact page</h1>
+    </Page>
+  );
+};
+
+export default Contact;

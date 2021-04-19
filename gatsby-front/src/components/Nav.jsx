@@ -59,7 +59,7 @@ function NavLink({ icon }) {
   );
 }
 
-function Nav() {
+function Nav({ title }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
   const linkref = useRef(null);
@@ -83,7 +83,7 @@ function Nav() {
   return (
     <NavFixed>
       <NavbarNav>
-        <Banner>Gallery Template</Banner>
+        <Banner>{title}</Banner>
         <NavLink icon={<HomeIcon />} key="Home" />
         <NavItem
           linkref={linkref}

@@ -12,8 +12,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   siteMetadata: {
-    title: 'Charles Penny',
-    siteUrl: 'https://charles.penny.co.uk',
+    title: 'Template Site',
+    siteURL: 'https://template.co.uk',
     description: 'Gallery website',
   },
   plugins: [
@@ -32,7 +32,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
+    // 'gatsby-plugin-sitemap',
     'gatsby-plugin-react-svg',
     {
       resolve: `gatsby-plugin-typography`,
