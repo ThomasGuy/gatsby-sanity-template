@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { TitleContext } from '../components/Layout';
+
 import { Page } from '../styles';
 
 const Contact = () => {
-  const { title, setTitle } = useContext(TitleContext);
+  const { setTitle } = useContext(TitleContext);
 
   useEffect(() => {
     setTitle('Bloody Contact Page');

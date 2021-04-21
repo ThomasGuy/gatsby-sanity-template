@@ -1,8 +1,9 @@
 import React, { createContext, useState } from 'react';
 import styled from 'styled-components';
+import { BreakpointProvider } from '../hooks/useBreakpoint';
+import { GlobalStyles } from '../styles';
 import Footer from './Footer';
 import Nav from './Nav';
-import { GlobalStyles } from '../styles';
 import SEO from './SEO';
 
 const ContentStyles = styled.div`
@@ -14,26 +15,36 @@ const ContentStyles = styled.div`
   margin: 0 auto;
 `;
 
-const Inner = styled.div`
-  padding: 0 2rem;
+const Main = styled.div`
+  padding: 0 3rem;
 `;
+
+const queries = {
+  xs: '(max-width: 320px)',
+  sm: '(max-width: 480px)',
+  md: '(max-width: 668px)',
+  or: '(orientation: portrait)', // we can check orientation also
+  navChange: '(min-width: 74rem)',
+};
 
 export const TitleContext = createContext({
   title: 'Sport',
   setTitle: () => {},
 });
 
-const Layout = ({ children, siteTitle, siteURL, description }) => {
+const Layout = ({ children, siteTitle, siteDescription }) => {
   const [title, setTitle] = useState(siteTitle);
   return (
     <>
       <GlobalStyles />
-
+      <SEO title={siteTitle} description={siteDescription} />
       <ContentStyles>
         <Nav title={title} />
-        <TitleContext.Provider value={{ title, setTitle }}>
-          <Inner>{children}</Inner>
-        </TitleContext.Provider>
+        <BreakpointProvider queries={queries}>
+          <TitleContext.Provider value={{ title, setTitle }}>
+            <Main>{children}</Main>
+          </TitleContext.Provider>
+        </BreakpointProvider>
         <Footer />
       </ContentStyles>
     </>

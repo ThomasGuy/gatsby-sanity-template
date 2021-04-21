@@ -2,10 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   html {
-    box-sizing: border-box;
     font-size: 10px;
     margin: 0;
     padding: 0;
+    font-size: 62.5%;
+    box-sizing: border-box;
   }
 
   *, *:before, *:after {
@@ -19,7 +20,7 @@ export const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --offWhite: #ededed;
     --grey: #efefef;
-    --maxWidth: 1280px;
+    --maxWidth: 1780px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --bg: rgb(102, 56, 25);
     --bg_link: #92570b;
@@ -32,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     --speed: 500ms;
     font-size: 2rem;
     min-height: 100vh;
-    background-color: var(--bg);
+    background-color: var(--black);
   }
 
 

@@ -3,13 +3,14 @@ import Layout from '../components/Layout';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 
 function LayoutContainer(props) {
-  const { title, siteURL, description } = useSiteMetadata();
+  const { siteTitle, siteURL, siteDescription } = useSiteMetadata();
+
   return (
     <Layout
       {...props}
-      siteTitle={title}
+      siteTitle={siteTitle}
       siteURL={siteURL}
-      decription={description}
+      siteDecription={siteDescription}
     />
   );
 }

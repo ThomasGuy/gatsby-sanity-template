@@ -95,7 +95,8 @@ const NavCollape = ({ list, dropref, setOpen }) => {
         animate={{ opacity: 0.9, x: '5%' }}
         exit={{ opacity: 0, x: '-110%' }}
         transition={{ ease: 'easeOut', duration: 0.5 }}
-        key="subject">
+        key="subject"
+        aria-expanded="true">
         {categories}
         <MenuItemStyled key="contact" id="contact">
           <Link to="/contact" activeStyle={{ color: 'yellow', opacity: '1' }}>

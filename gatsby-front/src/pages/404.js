@@ -28,11 +28,11 @@ const codeStyles = {
 
 // markup
 const NotFoundPage = () => {
-  const { title, setTitle } = React.useContext(TitleContext);
+  const { setTitle } = React.useContext(TitleContext);
 
   React.useEffect(() => {
     setTitle('Page Not Found');
-  }, [setTitle, title]);
+  }, [setTitle]);
 
   return (
     <main style={pageStyles}>

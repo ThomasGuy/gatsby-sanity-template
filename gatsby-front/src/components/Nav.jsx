@@ -52,7 +52,7 @@ function NavItem({ open, setOpen, children, icon, linkref }) {
 function NavLink({ icon }) {
   return (
     <NavbarNavItem>
-      <Link className="icon-button" to="/">
+      <Link className="icon-button" to="/" roll="link">
         {icon}
       </Link>
     </NavbarNavItem>

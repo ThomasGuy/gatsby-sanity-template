@@ -2,15 +2,16 @@ import React, { useContext, useEffect } from 'react';
 
 import { Page } from '../styles';
 import SimpleModal from '../components/SimpleModal';
-import { TitleContext } from '../components/Layout';
 import useSiteMetadata from '../hooks/useSiteMetadata';
+import { TitleContext } from '../components/Layout';
 
 const Home = () => {
-  const { title, setTitle } = useContext(TitleContext);
+  const { setTitle } = useContext(TitleContext);
+  const { siteTitle } = useSiteMetadata();
 
   useEffect(() => {
-    setTitle('Home Page');
-  }, [setTitle, title]);
+    setTitle(siteTitle);
+  }, [setTitle, siteTitle]);
 
   return (
     <Page>

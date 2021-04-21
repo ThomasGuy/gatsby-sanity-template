@@ -9,57 +9,46 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import styled from 'styled-components';
+
 import { TitleContext } from '../components/Layout';
 import SanityImageBox from '../components/SanityImageBox';
 import { Modal } from '../components/SimpleModal';
 import SEO from '../components/SEO';
-
-const GalleryLayout = styled.div`
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 10rem;
-  overflow: hidden;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  & > {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  @media screen and (min-width: 476px) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-  }
-
-  @media screen and (min-width: 668px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 30px;
-    margin-top: 12rem;
-  }
-
-  @media screen and (min-width: 992px) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-`;
+import { GalleryLayout } from '../styles';
+import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const Gallery = ({ data }) => {
-  const { title, setTitle } = useContext(TitleContext);
+  const { setTitle } = useContext(TitleContext);
   const [openModal, setOpen] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
+  const mql = useBreakpoint();
+  console.log(mql);
 
   useEffect(() => {
     setTitle(data.title.name);
   }, [setTitle, data.title.name]);
 
-  const pictures = data.allSanityPicture.edges.map(({ node }, idx) => {
-    const { image, name, id } = node;
-    return (
-      <SanityImageBox name={name} image={image} key={id} idx={idx} alt={name} />
-    );
+  const propsArray = data.allSanityPicture.edges.map(({ node }) => {
+    const { image, name, dimensions, id, category } = node;
+    return {
+      image,
+      id,
+      alt: name,
+      name,
+      show: category.border,
+      aspectRatio: image.asset.metadata.dimensions.aspectRatio,
+      dimensions,
+    };
+  });
+
+  const sorted = propsArray.sort(function (p1, p2) {
+    return p2.aspectRatio - p1.aspectRatio;
+  });
+
+  const pictures = sorted.map((props, idx) => {
+    const { aspectRatio, ...rest } = props;
+    return <SanityImageBox idx={idx} mql={mql} {...rest} />;
   });
 
   const setIndex = useCallback(
@@ -112,8 +101,15 @@ const Gallery = ({ data }) => {
 
   return (
     <GalleryLayout onClick={clickHandler}>
-      <SEO title={title} />
-      {pictures}
+      {pictures.map(pic => {
+        const { image, id, name } = pic.props;
+        return (
+          <div key={id}>
+            <SEO title={name} imageSrc={image.asset.url} />
+            {pic}
+          </div>
+        );
+      })}
       {openModal && (
         <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
       )}
@@ -130,16 +126,28 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
           name
+          id
+          dimensions {
+            height
+            width
+          }
+          category {
+            border
+          }
           image {
             asset {
               url
               gatsbyImageData(
                 layout: CONSTRAINED
-                width: 600
+                width: 350
                 placeholder: BLURRED
               )
+              metadata {
+                dimensions {
+                  aspectRatio
+                }
+              }
             }
           }
         }
