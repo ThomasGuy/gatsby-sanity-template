@@ -1,27 +1,35 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
+import { mediaQuery } from '../styles';
 
 const Box = styled.div`
   /* set max-width to sane width as gatsbyImageData */
   max-width: 35rem;
-  /* height: auto; */
   margin: 0 auto;
 
   p {
     text-align: center;
     color: var(--white);
     opacity: 0.9;
-    font-size: 1.8rem;
     margin: 0;
-    margin-top: 0.6rem;
-    padding-bottom: 1rem;
-    line-height: 1.8;
-  }
-  .dim {
-    color: var(--offWhite);
-    opacity: 0.8;
-    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+
+    .dim {
+      color: var(--offWhite);
+      opacity: 0.8;
+      font-size: 1.1rem;
+    }
+
+    ${mediaQuery('sm')`
+      font-size: 1.6rem;
+      line-height: 1.8;
+      .dim {
+        font-size: 1.4rem;
+      }
+    `};
   }
 `;
 
@@ -42,7 +50,8 @@ const SanityImageBox = ({
   mql,
   dimensions = null,
 }) => {
-  const trigger = mql.md;
+  const trigger = mql.navChange;
+  console.log({ mql });
   return (
     <Box>
       <GatsbyImage
@@ -50,7 +59,7 @@ const SanityImageBox = ({
         alt={alt}
         idx={idx}
         loading="eager"
-        imgStyle={show && { border: `${trigger ? '15px' : '25px'} solid #fff` }}
+        imgStyle={show && { border: `${trigger ? '12px' : '18px'} solid #fff` }}
       />
       {name && (
         <p>

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 
-import HomeIcon from './SimpleModal/assets/svg/house.svg';
-import BurgerIcon from './SimpleModal/assets/svg/list.svg';
+import HomeIcon from '../assets/svg/house.svg';
+import BurgerIcon from '../assets/svg/list.svg';
 import { NavFixed, NavbarNav, NavbarNavItem, Banner } from '../styles';
 import NavCollapse from './NavCollapse';
 import useOnClickOutside from '../hooks/useOnClickOutside';

@@ -1,11 +1,10 @@
 // these breakpoints refer to gallery layout with maw-width 350px
 const breakpoints = {
-  xs: 360,
-  sm: 500,
-  md: 720,
-  lg: 1040,
-  xl: 1360,
-  xxl: 1680,
+  xs: 320,
+  sm: 590,
+  md: 900,
+  lg: 1440,
+  xl: 1780,
 };
 
 export const mediaQuery = key => style =>

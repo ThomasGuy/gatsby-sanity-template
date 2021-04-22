@@ -16,28 +16,27 @@ export const GalleryLayout = styled.div`
     scrollbar-width: none; /* Firefox */
   }
 
-  ${mediaQuery('sm')`
+  ${mediaQuery('xs')`
     grid-template-columns: 1fr 1fr;
-    column-gap: 3rem;
+    column-gap: 2rem;
+    `};
+
+  ${mediaQuery('sm')`
+    grid-template-columns: 1fr 1fr 1fr;
     `};
 
   ${mediaQuery('md')`
-    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    `};
+
+  ${mediaQuery('lg')`
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     column-gap: 4rem;
     row-gap: 3rem;
     `};
 
-  ${mediaQuery('lg')`
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    `};
-
   ${mediaQuery('xl')`
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 5rem;
-    row-gap: 4rem;
-  `};
-
-  ${mediaQuery('xxl')`
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
   `};
 `;

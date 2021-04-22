@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
-import HomeIcon from '../components/SimpleModal/assets/svg/house.svg';
+import HomeIcon from '../assets/svg/house.svg';
 import { TitleContext } from '../components/Layout';
 
 // styles

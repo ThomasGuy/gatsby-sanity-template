@@ -23,7 +23,6 @@ const Gallery = ({ data }) => {
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
   const mql = useBreakpoint();
-  console.log(mql);
 
   useEffect(() => {
     setTitle(data.title.name);
@@ -74,11 +73,12 @@ const Gallery = ({ data }) => {
 
   const handleKeyUp = useCallback(
     e => {
+      // console.log('key', e.keyCode);
       const keys = {
         27: () => {
           e.preventDefault();
           setOpen(state => !state);
-          window.removeEventListener('keyup', handleKeyUp, false);
+          // window.removeEventListener('keyup', handleKeyUp, false);
         },
       };
 

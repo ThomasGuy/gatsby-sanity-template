@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 
 import { Page } from '../styles';
-import SimpleModal from '../components/SimpleModal';
+import { SimpleModal } from '../components/SimpleModal';
 import useSiteMetadata from '../hooks/useSiteMetadata';
 import { TitleContext } from '../components/Layout';
 

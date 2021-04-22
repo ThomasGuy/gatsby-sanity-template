@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Page = styled.div`
+  max-width: 100rem;
+  margin: 0 auto;
   margin-top: 8rem;
   h1,
   h2,

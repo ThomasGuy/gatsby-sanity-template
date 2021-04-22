@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
-import CloseIcon from './svg/x-octagon.svg';
+import CloseIcon from '../../assets/svg/x-octagon.svg';
 import { Button, ModalBox, ModalWrapper } from './modalStyle';
 
-export function Modal({ onCloseRequest, children }) {
+function Modal({ onCloseRequest, children }) {
   const modal = useRef(null);
 
   const handleKeyUp = useCallback(
@@ -67,4 +67,4 @@ function SimpleModal({ children, buttonLabel = 'Open Modal' }) {
   );
 }
 
-export default SimpleModal;
+export { SimpleModal, Modal };

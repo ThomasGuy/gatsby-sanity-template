@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   html {
-    font-size: 10px;
     margin: 0;
     padding: 0;
     font-size: 62.5%;
@@ -20,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --offWhite: #ededed;
     --grey: #efefef;
-    --maxWidth: 1780px;
+    --maxWidth: 1940px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --bg: rgb(102, 56, 25);
     --bg_link: #92570b;
@@ -31,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     --sm: 479;
     --border-radius: 8px;
     --speed: 500ms;
+
     font-size: 2rem;
     min-height: 100vh;
     background-color: var(--black);

@@ -24,9 +24,9 @@ const DropDown = styled(motion.div)`
 `;
 
 const MenuItemStyled = styled.div`
-  height: 45px;
+  height: 4.5rem;
   display: flex;
-  gap: 5px;
+  gap: 0.5rem;
   align-items: center;
   border-radius: var(--border-radius);
   padding: 0.5rem;

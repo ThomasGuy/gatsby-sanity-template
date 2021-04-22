@@ -1,30 +1,40 @@
 import React, { createContext, useState } from 'react';
 import styled from 'styled-components';
 import { BreakpointProvider } from '../hooks/useBreakpoint';
-import { GlobalStyles } from '../styles';
+import { GlobalStyles, mediaQuery } from '../styles';
 import Footer from './Footer';
 import Nav from './Nav';
 import SEO from './SEO';
 
 const ContentStyles = styled.div`
-  background-color: var(--bg);
   max-width: var(--maxWidth);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0 auto;
+  background-color: var(--bg);
 `;
 
 const Main = styled.div`
-  padding: 0 3rem;
+  padding: 0 0.7rem;
+
+  ${mediaQuery('xs')`
+  padding: 0 1rem;
+`};
+
+  ${mediaQuery('sm')`
+  padding: 0 1.5rem;
+`};
+
+  ${mediaQuery('md')`
+  padding: 0 2.2rem;
+`};
 `;
 
+// these should maybe be synced up with mediaQueries
 const queries = {
-  xs: '(max-width: 320px)',
-  sm: '(max-width: 480px)',
-  md: '(max-width: 668px)',
   or: '(orientation: portrait)', // we can check orientation also
-  navChange: '(min-width: 74rem)',
+  navChange: '(max-width: 900px)',
 };
 
 export const TitleContext = createContext({
