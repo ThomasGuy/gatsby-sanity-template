@@ -15,6 +15,7 @@ module.exports = {
     title: 'Template Site',
     siteURL: 'https://template.co.uk',
     description: 'Gallery website',
+    author: 'Thomas Guy <twguy.weddev@gmail.com>',
   },
   plugins: [
     {

@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
+import { animated, useSpring } from 'react-spring';
 import { Link } from 'gatsby';
 
 // Dropdown styles
-const DropDown = styled(motion.div)`
+const DropDown = styled(animated.div)`
   position: absolute;
   top: calc(var(--nav-size) * 1.1);
   left: 0;
@@ -82,6 +83,12 @@ const NavCollape = ({ list, dropref, setOpen }) => {
     </MenuItemStyled>
   ));
 
+  const springProps = useSpring({
+    transform: 'translateX(20px) scaleY(1)',
+    opacity: 0.95,
+    from: { transform: 'translateX(-110px) scaleY(0.5)', opacity: 0 },
+  });
+
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
@@ -90,13 +97,7 @@ const NavCollape = ({ list, dropref, setOpen }) => {
       onTouchStart={handleTouchStart}
       role="button"
       tabIndex={0}>
-      <DropDown
-        initial={{ opacity: 0, x: '-110%' }}
-        animate={{ opacity: 0.9, x: '5%' }}
-        exit={{ opacity: 0, x: '-110%' }}
-        transition={{ ease: 'easeOut', duration: 0.5 }}
-        key="subject"
-        aria-expanded="true">
+      <DropDown style={{ ...springProps }} key="subject" aria-expanded="true">
         {categories}
         <MenuItemStyled key="contact" id="contact">
           <Link to="/contact" activeStyle={{ color: 'yellow', opacity: '1' }}>

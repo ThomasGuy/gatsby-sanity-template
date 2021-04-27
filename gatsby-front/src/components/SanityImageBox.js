@@ -5,7 +5,7 @@ import { mediaQuery } from '../styles';
 
 const Box = styled.div`
   /* set max-width to sane width as gatsbyImageData */
-  max-width: 35rem;
+  max-width: 65rem;
   margin: 0 auto;
 
   p {
@@ -33,14 +33,6 @@ const Box = styled.div`
   }
 `;
 
-const styles = {
-  container: flip => ({
-    width: '100%',
-    height: 'auto',
-    border: `${flip ? '15px' : '25px'} solid #fff`,
-  }),
-};
-
 const SanityImageBox = ({
   image,
   name,
@@ -51,7 +43,6 @@ const SanityImageBox = ({
   dimensions = null,
 }) => {
   const trigger = mql.navChange;
-  console.log({ mql });
   return (
     <Box>
       <GatsbyImage
@@ -66,7 +57,7 @@ const SanityImageBox = ({
           {name}
           {'  '}
           <span className="dim">
-            {dimensions ? `${dimensions.height}x${dimensions.width}cm` : ``}
+            {dimensions ? `${dimensions.width}x${dimensions.height}cm` : ''}
           </span>
         </p>
       )}

@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     --white: #fff;
     --offWhite: #ededed;
     --grey: #efefef;
-    --maxWidth: 1940px;
+    --maxWidth: 1450px;
     --bs: 0 12px 24px 0 rgba(0,0,0,0.2);
     --bg: rgb(102, 56, 25);
     --bg_link: #92570b;

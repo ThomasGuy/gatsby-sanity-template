@@ -19,7 +19,7 @@ import { useBreakpoint } from '../hooks/useBreakpoint';
 
 const Gallery = ({ data }) => {
   const { setTitle } = useContext(TitleContext);
-  const [openModal, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [index, _setIndex] = useState(-1);
   const indexRef = useRef(index);
   const mql = useBreakpoint();
@@ -62,22 +62,22 @@ const Gallery = ({ data }) => {
 
   const clickHandler = useCallback(
     evt => {
+      console.log(evt.target.nodeName);
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
-      setOpen(true);
       setIndex(parseInt(evt.target.attributes.idx.value));
+      setOpenModal(true);
     },
-    [setIndex, setOpen]
+    [setIndex, setOpenModal]
   );
 
   const handleKeyUp = useCallback(
     e => {
-      // console.log('key', e.keyCode);
       const keys = {
         27: () => {
           e.preventDefault();
-          setOpen(state => !state);
+          setOpenModal(state => !state);
           // window.removeEventListener('keyup', handleKeyUp, false);
         },
       };
@@ -86,32 +86,35 @@ const Gallery = ({ data }) => {
         keys[e.keyCode]();
       }
     },
-    [setOpen]
+    [setOpenModal]
   );
 
   useEffect(() => {
-    window.addEventListener('keyup', handleKeyUp, false);
-    document.addEventListener('click', clickHandler, false);
+    document.addEventListener('keyup', handleKeyUp, false);
+    window.addEventListener('click', clickHandler, false);
 
     return () => {
-      window.removeEventListener('keyup', handleKeyUp, false);
-      document.removeEventListener('click', clickHandler, false);
+      document.removeEventListener('keyup', handleKeyUp, false);
+      window.removeEventListener('click', clickHandler, false);
     };
   }, [clickHandler, handleKeyUp]);
 
   return (
     <GalleryLayout onClick={clickHandler}>
+      <SEO title={data.title.name} />
       {pictures.map(pic => {
-        const { image, id, name } = pic.props;
+        const { image, id } = pic.props;
         return (
           <div key={id}>
-            <SEO title={name} imageSrc={image.asset.url} />
+            <SEO imageSrc={image.asset.url} />
             {pic}
           </div>
         );
       })}
       {openModal && (
-        <Modal onCloseRequest={() => setOpen(false)}>{pictures[index]}</Modal>
+        <Modal onCloseRequest={() => setOpenModal(false)}>
+          {pictures[index]}
+        </Modal>
       )}
     </GalleryLayout>
   );
@@ -140,7 +143,7 @@ export const pageQuery = graphql`
               url
               gatsbyImageData(
                 layout: CONSTRAINED
-                width: 350
+                width: 650
                 placeholder: BLURRED
               )
               metadata {

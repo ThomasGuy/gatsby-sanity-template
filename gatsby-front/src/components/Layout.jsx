@@ -34,7 +34,7 @@ const Main = styled.div`
 // these should maybe be synced up with mediaQueries
 const queries = {
   or: '(orientation: portrait)', // we can check orientation also
-  navChange: '(max-width: 900px)',
+  navChange: '(max-width: 780px)',
 };
 
 export const TitleContext = createContext({
@@ -49,8 +49,8 @@ const Layout = ({ children, siteTitle, siteDescription }) => {
       <GlobalStyles />
       <SEO title={siteTitle} description={siteDescription} />
       <ContentStyles>
-        <Nav title={title} />
         <BreakpointProvider queries={queries}>
+          <Nav title={title} />
           <TitleContext.Provider value={{ title, setTitle }}>
             <Main>{children}</Main>
           </TitleContext.Provider>
