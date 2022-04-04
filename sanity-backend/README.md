@@ -8,6 +8,6 @@ This will update the cms content for Gatsby.
 
 ### Using cms - charles-penny
 
-dataset - website-pro
+dataset - production
 
 ID - kjw2ad3
