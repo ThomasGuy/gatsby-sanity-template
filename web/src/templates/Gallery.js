@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable react/prop-types */
 
 import { graphql } from 'gatsby';
 import React, {
@@ -45,10 +44,10 @@ const Gallery = ({ data }) => {
     return p2.aspectRatio - p1.aspectRatio;
   });
 
-  const pictures = sorted.map((props, idx) => {
-    const { aspectRatio, ...rest } = props;
-    return <SanityImageBox idx={idx} mql={mql} {...rest} />;
-  });
+  const pictures = sorted.map((props, idx) => (
+    // const { aspectRatio, ...rest } = props;
+    <SanityImageBox idx={idx} mql={mql} {...props} />
+  ));
 
   const setIndex = useCallback(
     idx => {
@@ -62,7 +61,7 @@ const Gallery = ({ data }) => {
 
   const clickHandler = useCallback(
     evt => {
-      console.log(evt.target.nodeName);
+      // console.log(evt.target.nodeName);
       if (evt.target.nodeName !== 'IMG') {
         return;
       }
@@ -140,6 +139,7 @@ export const pageQuery = graphql`
           }
           image {
             asset {
+              id
               url
               gatsbyImageData(
                 layout: CONSTRAINED

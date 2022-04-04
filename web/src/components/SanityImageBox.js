@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { mediaQuery } from '../styles';
 
 const Box = styled.div`
-  /* set max-width to sane width as gatsbyImageData */
+  /* set max-width to same width as gatsbyImageData */
   max-width: 65rem;
   margin: 0 auto;
 
@@ -50,7 +50,9 @@ const SanityImageBox = ({
         alt={alt}
         idx={idx}
         loading="eager"
-        imgStyle={show && { border: `${trigger ? '12px' : '18px'} solid #fff` }}
+        imgStyle={
+          show && { border: `${trigger ? '1.2rem' : '1.8rem'} solid #fff` }
+        }
       />
       {name && (
         <p>
